@@ -1,40 +1,56 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import './Header.css';
 
-function Header() {
+function Header({ isLoggedIn }) {
     const [navMoreVisibillity, setnavMoreVisibillity] = useState("none")
     const openMore = (e) => {
-        if(navMoreVisibillity === "none"){
+        if (navMoreVisibillity === "none") {
             setnavMoreVisibillity("flex")
         } else {
             setnavMoreVisibillity("none")
         }
     }
+    console.log(isLoggedIn)
+    const renderMore = () => {
+        if (isLoggedIn) {
+            return (
+                <div id="navMore" style={{ display: navMoreVisibillity }}>
+                    <a href="/allCards">Tarot Cards</a>
+                    <a href="/journal">Journal</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            )
+        } else {
+            return (
+                <div id="navMore" style={{ display: navMoreVisibillity }}>
+                    <a href="/allCards">Tarot Cards</a>
+                    <a href="/login">Login</a>
+                </div>
+            )
+        }
+    }
+
     return (
         <header id="mainHeader">
             <h1>Mystic Lilac</h1>
-            <div id="searchAndMore"> 
+            <div id="searchAndMore">
                 <div id="searchBar">
                     <label htmlFor="searchInput">search</label>
                     <i id="navSearch" className="uil uil-search"></i>
-                    <input id="searchInput" className="hidden" name="searchInput" type="text" placeholder="Search on page"/>
+                    <input id="searchInput" className="hidden" name="searchInput" type="text" placeholder="Search on page" />
                     <button id="searchBtn" className="hidden" type="button" >Search</button>
                 </div>
                 <div id="more">
-                <a href="/profile">
-                <i className="uil uil-user-circle"><h2>Profile</h2></i>
-                </a>
-                <a href="/home">
-                <i id="home" className="uil uil-home"><h2>home</h2></i>
-                </a>
-                <i id="moreI" className="uil uil-bars" onClick={openMore}><h2>more</h2></i>
-                <div id="navMore" style={{display:navMoreVisibillity}}>
-                    <a href="/TarotCards/deck/?id=2">Tarot Cards</a>
-                    <a href="/journal">Journal</a>
-                    <a href="/api/users/logout">Logout</a>
+                    <a href="/profile">
+                        <i className="uil uil-user-circle"><h2>Profile</h2></i>
+                    </a>
+                    <a href="/home">
+                        <i id="home" className="uil uil-home"><h2>home</h2></i>
+                    </a>
+                    <i id="moreI" className="uil uil-bars" onClick={openMore}><h2>more</h2></i>
+                    {renderMore()}
                 </div>
-            </div>
             </div>
         </header>
     )

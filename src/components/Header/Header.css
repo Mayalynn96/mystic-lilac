@@ -3,8 +3,8 @@
     --lightText: #ffffd6;
     --middleText: #EFA9AE;
     --dark: #2a0e26;
-  }
-  
+}
+
 
 *,
 *::before,
@@ -15,24 +15,26 @@
     outline: 0;
     text-decoration: none;
 }
-.is-hidden{
+
+.is-hidden {
     display: none;
 }
-header label{
+
+header label {
     display: none;
 }
 
 button:hover {
     cursor: pointer;
-  }
+}
 
-body{
+body {
     background-color: var(--background);
     font-family: 'Amatic SC', cursive;
     color: var(--middleText);
 }
 
-header{
+header {
     display: flex;
     background-color: var(--dark);
     width: 100%;
@@ -46,17 +48,17 @@ header{
     box-shadow: 0px 5px 5px black;
 }
 
-header h1{
+header h1 {
     font-size: 70px;
 }
 
-#searchAndMore{
+#searchAndMore {
     display: flex;
     flex-direction: row;
     height: 100%;
 }
 
-#navMore{
+#navMore {
     flex-direction: column;
     font-size: 30px;
     height: 100vh;
@@ -72,14 +74,15 @@ header h1{
     margin: 5px 20px;
 }
 
-#more{
+#more {
     height: 100%;
     font-size: 35px;
     display: flex;
     align-items: center;
 }
 
-#moreI, #navMore a {
+#moreI,
+#navMore a {
     cursor: pointer;
 }
 
@@ -89,7 +92,7 @@ header h1{
     text-align: center;
 }
 
-#more i:hover h2{
+#more i:hover h2 {
     display: block;
 }
 
@@ -102,7 +105,8 @@ header h1{
     padding: 5px;
 }
 
-#searchBar input, #searchBar button {
+#searchBar input,
+#searchBar button {
     margin: 5px;
     border-radius: 5px;
     border: solid 1px var(--middleText);
@@ -112,32 +116,32 @@ header h1{
     color: #EFA9AE;
 }
 
-a{
+a {
     text-decoration: none;
     color: var(--middleText);
 }
 
 main {
-    padding-top: 100px;
+    padding-top: 150px;
     color: var(--middleText);
     text-align: center;
 }
 
-h2{
+h2 {
     font-size: 60px;
 }
 
-h3{
+h3 {
     font-size: 50px;
 }
 
-#indexRandom{
+#indexRandom {
     margin: 50px auto;
     display: flex;
     justify-content: center;
 }
 
-#indexRandom div{
+#indexRandom div {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -146,36 +150,37 @@ h3{
     margin-left: 10px;
 }
 
-.randomCard{
+.randomCard {
     height: 500px;
 }
 
-main p{
+main p {
     padding: 5px;
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-img{
+img {
     border-radius: 10px;
     box-shadow: 5px 5px 5px var(--dark);
 }
+
 #allCards {
     width: 80%;
     margin: auto;
     list-style: none;
 }
 
-#allCards li div{
- display: flex;
- padding: 5px;
+#allCards li div {
+    display: flex;
+    padding: 5px;
 }
 
-.odd{
+.odd {
     flex-direction: row-reverse;
 }
 
-#allCards h3{
+#allCards h3 {
     height: 100%;
     margin: 10px;
 }
@@ -184,12 +189,12 @@ img{
     height: 500px;
 }
 
-#loginCard{
+#loginCard {
     background-color: var(--dark);
     opacity: 80%;
 }
 
-#loginCard h1{
+#loginCard h1 {
     font-size: 60px;
 }
 
@@ -205,7 +210,7 @@ img{
     font-size: 20px;
 }
 
-#loginCard button{
+#loginCard button {
     width: 170px;
     font-size: 20px;
     padding: 0.5%;
@@ -214,77 +219,99 @@ img{
 }
 
 @media screen and (max-width: 923px) {
-    main h2{
+    main h2 {
         font-size: 10vw;
     }
+
     main {
         padding-top: 16vw;
     }
-    #more i:hover h2{
+
+    #more i:hover h2 {
         display: none;
     }
+
     header {
         height: 15vw;
         align-items: flex-start;
     }
-    header h1{
+
+    header h1 {
         font-size: 10vw;
     }
-    #searchBar i, #more i {
+
+    #searchBar i,
+    #more i {
         font-size: 5vw;
         cursor: pointer;
     }
-    #searchBar input, #searchBar button{
+
+    #searchBar input,
+    #searchBar button {
         position: absolute;
         font-size: 5vw;
         padding: 5px;
         top: 15vw;
     }
-    #searchBar input{
+
+    #searchBar input {
         left: 10px;
     }
-    #searchBar button{
+
+    #searchBar button {
         right: 10px;
     }
+
     .hidden {
         display: none;
     }
-    .openSearchBar{
+
+    .openSearchBar {
         height: 30vw;
     }
-    #searchAndMore{
+
+    #searchAndMore {
         margin-top: 10px;
     }
-    #more, #searchBar, #more a{
+
+    #more,
+    #searchBar,
+    #more a {
         display: flex;
-        align-items:flex-start;
+        align-items: flex-start;
         padding-top: 0;
         justify-content: center;
     }
-    #navMore{
-        top: 15vw; 
+
+    #navMore {
+        top: 15vw;
         height: 100vh;
     }
+
     #navMore a {
         font-size: 8vw;
         margin: 5px 20px;
     }
-    #indexRandom{
+
+    #indexRandom {
         flex-direction: column;
         align-items: center;
     }
-    .randomCard{
+
+    .randomCard {
         width: 50%;
         height: auto;
     }
-    #indexRandom div{
+
+    #indexRandom div {
         width: 80%;
         margin-top: 5px;
     }
-    #allCards h3{
+
+    #allCards h3 {
         font-size: 5vw;
     }
-    
+
     #allCards img {
         width: 35vw;
         height: auto;
