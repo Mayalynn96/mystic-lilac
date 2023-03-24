@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './Header.css';
 
-function Header({ isLoggedIn }) {
+function Header({ isLoggedIn, logout }) {
     const [navMoreVisibillity, setnavMoreVisibillity] = useState("none")
     const openMore = (e) => {
         if (navMoreVisibillity === "none") {
@@ -11,6 +11,7 @@ function Header({ isLoggedIn }) {
             setnavMoreVisibillity("none")
         }
     }
+    
     console.log(isLoggedIn)
     const renderMore = () => {
         if (isLoggedIn) {
@@ -18,7 +19,7 @@ function Header({ isLoggedIn }) {
                 <div id="navMore" style={{ display: navMoreVisibillity }}>
                     <a href="/allCards">Tarot Cards</a>
                     <a href="/journal">Journal</a>
-                    <a href="/logout">Logout</a>
+                    <a href="/login" onClick={logout}>Logout</a>
                 </div>
             )
         } else {
@@ -33,7 +34,7 @@ function Header({ isLoggedIn }) {
 
     return (
         <header id="mainHeader">
-            <h1>Mystic Lilac</h1>
+            <h1>The Witching Web</h1>
             <div id="searchAndMore">
                 <div id="searchBar">
                     <label htmlFor="searchInput">search</label>

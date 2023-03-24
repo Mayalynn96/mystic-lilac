@@ -41,7 +41,6 @@ function Login({ setToken, setIsLoggedIn, setUserId }) {
         <main>
             <div className="loginBody">
                 <div id="loginCard">
-                    <h1 className="loginHeader">My Witchy Journal</h1>
                     <form onSubmit={handleLogin} className="loginForm" id="loginForm">
                         <input type="text" id="login" placeholder="email or username" value={loginInput} onChange={handleInputChange} />
                         <input type="password" id="loginPassword" placeholder="password" value={loginPasswordInput} onChange={handleInputChange} />
