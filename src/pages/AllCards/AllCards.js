@@ -3,15 +3,25 @@ import API from '../../utils/API';
 
 function AllCards() {
     const [allCards, setallCards] = useState([])
+    const [deckId, setdeckId] = useState(2)
+
     useEffect(() => {
-        API.getAllCards(2).then(cards => {
+        API.getAllCards(deckId).then(cards => {
             setallCards(cards)
         })
-    }, [])
+    }, [deckId])
+
+    const deckChange = (e) => {
+        setdeckId(e.target.value)
+    }
 
     return (
         <main>
-            <h2>See all my cards so far!</h2>
+            <h2>Choose a deck</h2>
+            <select name='deckSelection' id='deckSelection' onChange={deckChange}>
+                <option value="2">Maya's deck</option>
+                <option value="1">Rider-Waite</option>
+            </select>
             <ul id="allCards">
                 {allCards.map((card, index) => {
                     const alt = `Card ${card.cardNumber}: ${card.cardName}`

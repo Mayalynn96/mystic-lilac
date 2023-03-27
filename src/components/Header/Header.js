@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './Header.css';
 
-function Header({ isLoggedIn, logout }) {
+function Header({ isLoggedIn, logout, userId }) {
     const [navMoreVisibillity, setnavMoreVisibillity] = useState("none")
     const openMore = (e) => {
         if (navMoreVisibillity === "none") {
@@ -32,6 +32,14 @@ function Header({ isLoggedIn, logout }) {
         }
     }
 
+    let userProfile = ''
+    
+    if(isLoggedIn){
+        userProfile = `/profile/${userId}`
+    } else {
+        userProfile = `/login`
+    }
+
     return (
         <header id="mainHeader">
             <h1>The Witching Web</h1>
@@ -43,7 +51,7 @@ function Header({ isLoggedIn, logout }) {
                     <button id="searchBtn" className="hidden" type="button" >Search</button>
                 </div>
                 <div id="more">
-                    <a href="/profile">
+                    <a href={userProfile}>
                         <i className="uil uil-user-circle"><h2>Profile</h2></i>
                     </a>
                     <a href="/home">
