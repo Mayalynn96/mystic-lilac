@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import AllCards from "./pages/AllCards/AllCards";
 import Profile from "./pages/Profile/Profile";
+import Journal from "./pages/Journal/Journal";
 import API from "./utils/API";
 
 
@@ -46,7 +47,8 @@ function App() {
                 <Route path="/login" element={<Login setToken={setToken} setUserId={setUserId} setIsLoggedIn={setIsLoggedIn} />} />
                 <Route path="/profile/:id" element={<Profile token={token} userId={userId} />} />
                 <Route path="/allCards" element={<AllCards token={token} userId={userId} />} />
-                <Route path="*" element={<h1>404 page not found'</h1>} />
+                <Route path="/journal" element={<Journal isLoggedIn={isLoggedIn} token={token} userId={userId} />} />
+                <Route path="*" element={<h1>404 page not found</h1>} />
             </Routes>
         </BrowserRouter>
 
