@@ -1,0 +1,21 @@
+.react-datepicker-propper{
+    position: relative;
+    left: 100px;
+}
+
+#accuracyInput {
+    width: 150px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
