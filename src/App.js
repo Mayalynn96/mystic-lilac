@@ -5,7 +5,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import AllCards from "./pages/AllCards/AllCards";
 import Profile from "./pages/Profile/Profile";
-import Journal from "./pages/Journal/Journal";
+import Journal from "./pages/Journal/Journal.tsx";
 import API from "./utils/API";
 
 
