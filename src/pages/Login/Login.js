@@ -24,7 +24,7 @@ function Login({ setToken, setIsLoggedIn, setUserId }) {
             password: loginPasswordInput
         }
         API.login(userObj).then(data => {
-            console.log(data);
+            
             if (data.token) {
                 setToken(data.token);
                 setIsLoggedIn(true);
@@ -42,8 +42,8 @@ function Login({ setToken, setIsLoggedIn, setUserId }) {
             <div className="loginBody">
                 <div id="loginCard">
                     <form onSubmit={handleLogin} className="loginForm" id="loginForm">
-                        <input type="text" id="login" placeholder="email or username" value={loginInput} onChange={handleInputChange} />
-                        <input type="password" id="loginPassword" placeholder="password" value={loginPasswordInput} onChange={handleInputChange} />
+                        <input type="text" id="login" placeholder="email or username" value={loginInput} onChange={handleInputChange} autoComplete='username'/>
+                        <input type="password" id="loginPassword" placeholder="password" value={loginPasswordInput} onChange={handleInputChange} autoComplete='current-password' />
                         <button className="loginBttn">Login</button>
                     </form>
                     <div id="signUpCard">

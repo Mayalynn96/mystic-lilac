@@ -1,4 +1,4 @@
-.react-datepicker-propper{
+.react-datepicker-propper {
     position: relative;
     left: 100px;
 }
@@ -9,13 +9,191 @@
 
 #readingForm {
     display: flex;
-    flex-direction: column;
     width: 80%;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+#readingDateDiv, #eventDateDiv {
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.formDiv {
+    margin-top: 10px;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#generalTakeInput {
+    width: 50%;
 }
 
 #journalMain {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+#SearchResults {
+    max-height: 100px;
+    overflow: auto;
+    border: 1.5px solid #EFA9AE;
+    border-radius: 0px 0px 3px 3px;
+}
+
+.cardSelection {
+    cursor: pointer;
+    user-select: none;
+}
+
+.cardSelection:hover {
+    font-weight: bold;
+}
+
+.cardSelection:active {
+    color: #271a25;
+}
+
+#addPositionDiv {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.412);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#innerPositionDiv {
+    background-color: #271a25;
+    padding: 10px;
+    position: absolute;
+    display: flex;
+    width: 500px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#innerPositionDiv h1 {
+    width: 100%;
+}
+
+#innerPositionDiv h2 {
+    width: 40%;
+}
+
+#innerPositionDiv #searchbarContainer {
+    width: 100%;
+    margin-top: 5px;
+}
+
+#innerPositionDiv .searchbarInput {
+    width: 70%;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom: none;
+}
+
+#innerPositionDiv #SearchResults {
+    width: 70%;
+    background-color: #efa9ae63;
+    margin-bottom: 10px;
+}
+
+#selectedCardInput {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#xOutBtn {
+    width: 20px;
+    height: 20px;
+}
+
+#positionInput {
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+#personalInterpretationInput {
+    width: 70%;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+#addBtnPosition {
+    width: 100%;
+}
+
+#allAddedCards {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cardBox {
+    border: #EFA9AE solid 1.5px;
+    background-color: #efa9ae63;
+    border-radius: 5px;
+    height: 300px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+.cardBox button {
+    height: 50px;
+    width: 50px;
+    font-size: 40px;
+    margin: 10px;
+}
+
+.cardBox p {
+    margin: 5px;
+    text-align: justify;
+    font-size: 12px;
+}
+
+input, textarea, button {
+    background-color: #efa9ae63;
+    border-radius: 3px;
+    border: 1.5px solid #EFA9AE;
+    color: #EFA9AE;
+}
+
+input, textarea {
+    padding: 1%;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #EFA9AE;
+    opacity: 50%;
+}
+
+button {
+    padding: 0.25%;
+}
+
+#closeAddPositionBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+    height: 25px;
+    width: 25px;
 }

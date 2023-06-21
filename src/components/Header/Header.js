@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import './Header.css';
 
 function Header({ isLoggedIn, logout, userId }) {
@@ -12,7 +11,6 @@ function Header({ isLoggedIn, logout, userId }) {
         }
     }
     
-    console.log(isLoggedIn)
     const renderMore = () => {
         if (isLoggedIn) {
             return (

@@ -4,37 +4,57 @@ const URL_PREFIX="http://localhost:3002"
 // const URL_PREFIX="https://bg-journal-back.herokuapp.com"
 
 const API = {
-    getUserData:id=>{
-        return fetch(`${URL_PREFIX}/api/users/${id}`).then(res=>res.json())
+    getUserData:async id=>{
+        const res = await fetch(`${URL_PREFIX}/api/users/${id}`)
+        return await res.json()
     },
-    isValidToken:token=>{
-        return fetch(`${URL_PREFIX}/api/users/isValidToken`,{
-            headers:{
-                "authorization":`Bearer ${token}`
+    isValidToken:async token=>{
+        const res = await fetch(`${URL_PREFIX}/api/users/isValidToken`, {
+            headers: {
+                "authorization": `Bearer ${token}`
             }
-        }).then(res=>res.json())
+        })
+        return await res.json()
     },
-    login:userObj=>{
-        return fetch(`${URL_PREFIX}/api/users/login`,{
-            method:"POST",
-            body:JSON.stringify(userObj),
-            headers:{
-                "Content-Type":"application/json"
+    login:async userObj=>{
+        const res = await fetch(`${URL_PREFIX}/api/users/login`, {
+            method: "POST",
+            body: JSON.stringify(userObj),
+            headers: {
+                "Content-Type": "application/json"
             }
-        }).then(res=>res.json())
+        })
+        return await res.json()
     },
-    signup:userObj=>{
-        return fetch(`${URL_PREFIX}/api/users`,{
-            method:"POST",
-            body:JSON.stringify(userObj),
-            headers:{
-                "Content-Type":"application/json"
+    signup:async userObj=>{
+        const res = await fetch(`${URL_PREFIX}/api/users`, {
+            method: "POST",
+            body: JSON.stringify(userObj),
+            headers: {
+                "Content-Type": "application/json"
             }
-        }).then(res=>res.json())
+        })
+        return await res.json()
     },
-    getAllCards:deckId=>{
-        return fetch(`${URL_PREFIX}/api/cards/withDeck/${deckId}`).then(res=>res.json())
+    getAllCards:async deckId=>{
+        const res = await fetch(`${URL_PREFIX}/api/cards/withDeck/${deckId}`)
+        return await res.json()
     },
+    getAllCardsSimple:async ()=>{
+        const res = await fetch(`${URL_PREFIX}/api/cards`)
+        return await res.json()
+    },
+    createReading:async (readingObj, token) => {
+        const res = await fetch(`${URL_PREFIX}/api/readings`, {
+            method: "POST",
+            body: JSON.stringify(readingObj),
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${token}`
+            }
+        })
+        return await res.json()
+    }
 }
 
 export default API

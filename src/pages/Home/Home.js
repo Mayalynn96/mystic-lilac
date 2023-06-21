@@ -10,7 +10,7 @@ function Home() {
     useEffect(() => {
         API.getAllCards(2).then(cards => {
             setrandomCard(cards[Math.floor(Math.random()*cards.length)])
-            console.log(cards[Math.floor(Math.random()*cards.length)])
+            
             const interval = setInterval(() => {
                 setrandomCard(cards[Math.floor(Math.random()*cards.length)])
             }, 10000);

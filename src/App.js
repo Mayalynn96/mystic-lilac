@@ -1,23 +1,88 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import AllCards from "./pages/AllCards/AllCards";
 import Profile from "./pages/Profile/Profile";
-import Journal from "./pages/Journal/Journal.tsx";
+import Journal from "./pages/Journal/Journal";
 import API from "./utils/API";
 
+// const authState = {
+//     isLoading: true,
+//     isLoggedIn: false,
+//     userData: null,
+//     token: null,
+//     error: null
+// };
+
+// const authReducer = (state, action) => {
+//     console.log("authReducer", state, action);
+//     switch (action.type) {
+//         case 'authTokenStart':
+//             return {
+//                 ...state,
+//                 token: action.payload
+//             };
+//         case 'authTokenNoneFound':
+//             return {
+//                 ...state,
+//                 isLoading: false
+//             };
+//         case 'authTokenSuccess':
+//             return {
+//                 ...state,
+//                 isLoading: false,
+//                 isLoggedIn: true,
+//                 userData: action.payload
+//             };
+//         case 'authTokenFail':
+//             return {
+//                 ...state,
+//                 isLoading: false,
+//                 token: null,
+//                 error: action.payload
+//             }
+//         default:
+//             return state;
+//     }
+// }
 
 function App() {
-    
+
+    // const [state, dispatch] = useReducer(authReducer, authState);
+    // console.log("render", state)
+
     const [token, setToken] = useState("");
     const [userId, setUserId] = useState(0);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    // useEffect(() => {
+    //     const savedToken = localStorage.getItem("token");
+
+    //     if (savedToken) {
+    //         dispatch({ type: 'authTokenStart', payload: savedToken })
+
+    //         API.isValidToken(savedToken).then(tokenData => {
+    //             if (tokenData.isValid) {
+    //                 dispatch({type: 'authTokenSuccess', payload: tokenData.user})
+    //             } else {
+    //                 localStorage.removeItem("token")
+    //                 dispatch({type: 'authTokenFail', payload: tokenData.msg})
+    //             }
+    //         })
+
+    //     } else {
+    //         dispatch({ type: 'authTokenNoneFound'})
+    //     }
+    // }, [])
+
+
     useEffect(() => {
         const savedToken = localStorage.getItem("token");
-        console.log(savedToken)
+
         if (savedToken) {
+
             API.isValidToken(savedToken).then(tokenData => {
                 if (tokenData.isValid) {
                     setToken(savedToken);
@@ -28,7 +93,7 @@ function App() {
                 }
             })
         }
-    }, [])
+    });
 
     const logout = () => {
         setToken('');
