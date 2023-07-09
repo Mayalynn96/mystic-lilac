@@ -1,0 +1,13 @@
+#ReadingFormDiv{
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--dark);
+    padding: 10px;
+    box-shadow: 2px 2px 15px 2px black;
+    opacity: 80%;
+}
+
+#outcomeInput {
+    width: 40%;
+}

@@ -41,8 +41,8 @@ const API = {
         return await res.json()
     },
     getAllCardsSimple:async ()=>{
-        const res = await fetch(`${URL_PREFIX}/api/cards`)
-        return await res.json()
+        const res = await fetch(`${URL_PREFIX}/api/cards`);
+        return await res.json();
     },
     createReading:async (readingObj, token) => {
         const res = await fetch(`${URL_PREFIX}/api/readings`, {
@@ -52,8 +52,17 @@ const API = {
                 "Content-Type": "application/json",
                 "authorization": `Bearer ${token}`
             }
-        })
-        return await res.json()
+        });
+        return await res.json();
+    },
+    getAllUserReadings: async (token) => {
+        const res = await fetch(`${URL_PREFIX}/api/readings`, {
+            method: "GET",
+            headers: {
+                "authorization": `Bearer ${token}`
+            }
+        });
+        return await res.json();
     }
 }
 

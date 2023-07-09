@@ -7,7 +7,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import dayjs from 'dayjs';
 
-function ReadingForm({ token }) {
+function ReadingForm({ token, addReadingVis, setAddReadingVis, setAddReadingBtnVis }) {
     const today = dayjs().format("YYYY-MM-DD")
     const [readingDate, setReadingDate] = useState(today);
     const [eventDate, setEventDate] = useState<String | null>(today);
@@ -50,6 +50,7 @@ function ReadingForm({ token }) {
             setReadingDate(event.target.value)
         } else if (event.target.id === "eventDate") {
             setEventDate(event.target.value)
+            setNotNullEventDate(event.target.value)
         }
     }
 
@@ -74,6 +75,7 @@ function ReadingForm({ token }) {
                 disableEventDateLabel.style.display = "none";
                 event.target.textContent = "Add Event Date";
                 setEventDate(null)
+                setNotNullEventDate(today)
             } else if (eventDateInput && disableEventDate.style.display === "none") {
                 disableEventDate.style.display = "";
                 disableEventDateLabel.style.display = "";
@@ -227,22 +229,30 @@ function ReadingForm({ token }) {
                 personalInterpretation: "null",
                 isReversed: false
             }]);
-
+            setAddReadingVis("none");
+            setAddReadingBtnVis("");
             console.log(addedReading.msg)
         }
     }
 
+    const closeAddReading = () => {
+        setAddReadingVis("none");
+        setAddReadingBtnVis("");
+    }
+
+    const [notNullEventDate, setNotNullEventDate] = useState(today)
+    
     return (
-        <div id="ReadingFormDiv">
+        <div id="ReadingFormDiv" style={{display: addReadingVis}}>
             <h2>Adding a reading</h2>
             <form id="readingForm">
                 <div id="readingDateDiv">
                     <label>Reading Date:</label>
-                    <input type="date" onChange={handleChange} id="readingDate" value={readingDate}/>
+                    <input className="dateInputField" type="date" onChange={handleChange} id="readingDate" value={readingDate}/>
                 </div>
                 <div id='eventDateDiv'>
                     <label id="eventDateLabel">Event Date:</label>
-                    <input type="date" onChange={handleChange} id="eventDate" value={eventDate ? eventDate : today} />
+                    <input className="dateInputField" type="date" onChange={handleChange} id="eventDate" value={notNullEventDate} />
                     <button id='disableEventDate' onClick={disableEventDate}>x</button>
                 </div>
                 <div className='formDiv'>
@@ -307,6 +317,7 @@ function ReadingForm({ token }) {
                 </div>
             </div>
             <button onClick={addNewReading}>Add Reading</button>
+            <button onClick={closeAddReading}>Nevermind</button>
         </div>
     )
 }
