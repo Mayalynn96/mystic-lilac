@@ -18,7 +18,7 @@ function Login({ setToken, setIsLoggedIn, setUserId }) {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        
+
         const userObj = {
             login: loginInput,
             password: loginPasswordInput
@@ -29,11 +29,15 @@ function Login({ setToken, setIsLoggedIn, setUserId }) {
                 setToken(data.token);
                 setIsLoggedIn(true);
                 setUserId(data.user.id)
+                localStorage.setItem("token", data.token)
+                setloginInput("");
+                setloginPasswordInput("")
+                navigate("/home");
+            } else {
+                console.log(data)
             }
-            localStorage.setItem("token", data.token)
-            setloginInput("");
-            setloginPasswordInput("")
-            navigate("/home");
+        }).catch(err => {
+            console.log(err)
         })
     }
 
@@ -42,7 +46,7 @@ function Login({ setToken, setIsLoggedIn, setUserId }) {
             <div className="loginBody">
                 <div id="loginCard">
                     <form onSubmit={handleLogin} className="loginForm" id="loginForm">
-                        <input type="text" id="login" placeholder="email or username" value={loginInput} onChange={handleInputChange} autoComplete='username'/>
+                        <input type="text" id="login" placeholder="email or username" value={loginInput} onChange={handleInputChange} autoComplete='username' />
                         <input type="password" id="loginPassword" placeholder="password" value={loginPasswordInput} onChange={handleInputChange} autoComplete='current-password' />
                         <button className="loginBttn">Login</button>
                     </form>

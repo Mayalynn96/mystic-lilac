@@ -55,6 +55,15 @@ const API = {
         });
         return await res.json();
     },
+    deleteReading:async (readingId, token) => {
+        const res = await fetch(`${URL_PREFIX}/api/readings/deleteReading/${readingId}`, {
+            method: "DELETE",
+            headers: {
+                "authorization": `Bearer ${token}`
+            }
+        });
+        return await res.json();
+    },
     getAllUserReadings: async (token) => {
         const res = await fetch(`${URL_PREFIX}/api/readings`, {
             method: "GET",

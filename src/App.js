@@ -55,7 +55,8 @@ function App() {
 
     const [token, setToken] = useState("");
     const [userId, setUserId] = useState(0);
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     // useEffect(() => {
     //     const savedToken = localStorage.getItem("token");
@@ -82,18 +83,21 @@ function App() {
         const savedToken = localStorage.getItem("token");
 
         if (savedToken) {
-
             API.isValidToken(savedToken).then(tokenData => {
                 if (tokenData.isValid) {
                     setToken(savedToken);
                     setUserId(tokenData.user.id)
                     setIsLoggedIn(true)
+                    setIsLoading(false)
                 } else {
                     localStorage.removeItem("token")
+                    setIsLoading(false)
                 }
             })
+        } else {
+            setIsLoading(false)
         }
-    });
+    },[]);
 
     const logout = () => {
         setToken('');
@@ -112,7 +116,7 @@ function App() {
                 <Route path="/login" element={<Login setToken={setToken} setUserId={setUserId} setIsLoggedIn={setIsLoggedIn} />} />
                 <Route path="/profile/:id" element={<Profile token={token} userId={userId} />} />
                 <Route path="/allCards" element={<AllCards token={token} userId={userId} />} />
-                <Route path="/journal" element={<Journal isLoggedIn={isLoggedIn} token={token} userId={userId} />} />
+                <Route path="/journal" element={<Journal isLoggedIn={isLoggedIn} token={token} isLoading={isLoading} />} />
                 <Route path="*" element={<h1>404 page not found</h1>} />
             </Routes>
         </BrowserRouter>

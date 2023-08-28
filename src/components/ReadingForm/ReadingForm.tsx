@@ -7,7 +7,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import dayjs from 'dayjs';
 
-function ReadingForm({ token, addReadingVis, setAddReadingVis, setAddReadingBtnVis }) {
+function ReadingForm({ token, addReadingVis, setAddReadingVis, setAddReadingBtnVis, setUserReadings, getUserReadings }) {
     const today = dayjs().format("YYYY-MM-DD")
     const [readingDate, setReadingDate] = useState(today);
     const [eventDate, setEventDate] = useState<String | null>(today);
@@ -215,6 +215,7 @@ function ReadingForm({ token, addReadingVis, setAddReadingVis, setAddReadingBtnV
         if (addedReading.hasFailed) {
             console.log(addedReading.msg)
         } else {
+            getUserReadings();
             setReadingDate(today);
             setEventDate(today);
             setQuestion('');
